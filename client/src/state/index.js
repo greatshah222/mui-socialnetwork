@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
     mode: "light",
@@ -41,12 +41,14 @@ export const authSlice = createSlice({
 
         setPost: (state, action) => {
             const updatedPosts = state.posts.map((el) => {
-                if (el._id === action.payload.post_id) {
+                if (el._id === action.payload.post._id) {
                     // if it matches id we change post detail
+
                     return action.payload.post;
                 } else {
                     // else no match return original
-                    return post;
+
+                    return el;
                 }
             });
 

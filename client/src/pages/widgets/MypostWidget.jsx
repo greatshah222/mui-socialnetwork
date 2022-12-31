@@ -40,8 +40,9 @@ const MypostWidget = ({ picturePath }) => {
                 Authorization: `Bearer ${token}`,
             },
         });
+        console.log("res", res);
 
-        dispatch(setPosts(res.data));
+        dispatch(setPosts({ posts: res.data }));
         setImage(null);
         setPost("");
         setIsImage(false);
@@ -172,8 +173,8 @@ const MypostWidget = ({ picturePath }) => {
                     disabled={!post}
                     onClick={handlePost}
                     sx={{
-                        color: palette.background.alt,
-                        backgroundColor: palette.primary.main,
+                        color: palette.primary.main,
+                        backgroundColor: palette.primary.dark,
                         borderRadius: "3rem",
                     }}
                 >
